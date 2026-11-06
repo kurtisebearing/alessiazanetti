@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact — Alessia Zanetti</title>
+  <meta name="description" content="Contact Alessia Zanetti about commissions, sales and exhibitions.">
+  <!-- Social sharing preview (replace image with a real painting) -->
+  <meta property="og:title" content="Contact — Alessia Zanetti">
+  <meta property="og:description" content="Contact Alessia Zanetti about commissions, sales and exhibitions.">
+  <meta property="og:image" content="images/paintings/morning-light.jpg">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="logo" href="index.html">Alessia Zanetti</a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html" aria-current="page">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section container">
+      <h1>Contact</h1>
+      <p>
+        For enquiries about available work, commissions or exhibitions, email
+        <a href="mailto:hello@example.com">hello@example.com</a> or use the form below.
+      </p>
+
+      <!--
+        GitHub Pages can't process forms itself. Sign up for a free service such as
+        Formspree (formspree.io), then replace YOUR_FORM_ID below.
+        Or delete the form and keep just the email link above.
+      -->
+      <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <label>Name
+          <input type="text" name="name" autocomplete="name" required>
+        </label>
+        <label>Email
+          <input type="email" name="email" autocomplete="email" required>
+        </label>
+        <label>Painting / subject (optional)
+          <input type="text" name="subject">
+        </label>
+        <label>Message
+          <textarea name="message" required></textarea>
+        </label>
+        <!-- spam honeypot: humans never see this -->
+        <input type="text" name="_gotcha" class="visually-hidden" tabindex="-1" autocomplete="off">
+        <button class="button" type="submit">Send message</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span data-year>2026</span> Alessia Zanetti. All images &copy; the artist.</p>
+      <ul>
+        <li><a href="https://instagram.com/" rel="noopener">Instagram</a></li>
+        <li><a href="mailto:hello@example.com">Email</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="js/gallery.js" defer></script>
+</body>
+</html>
