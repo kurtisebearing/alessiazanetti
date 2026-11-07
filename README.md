@@ -70,9 +70,9 @@ when you double-click an `.html` file. Use a tiny local server instead:
 - **Email and Instagram:** the footer of every page and `contact.html` link to
   `alessia_zanetti@yahoo.it` and `instagram.com/alessia_zanetti`. To change them,
   search all four HTML files and replace every occurrence.
-- **Contact form:** create a free form at [formspree.io](https://formspree.io), then
-  replace `YOUR_FORM_ID` in `contact.html`. If you don't want a form, delete it and
-  keep only the email link.
+- **Contact form:** submissions are sent through [Formspree](https://formspree.io)
+  (form `xgaabarr`), which forwards them by email. To use a different form, change the
+  `action` URL on the `<form>` in `contact.html`.
 - **Colours and fonts:** change the variables in `:root` at the top of `css/style.css`.
 - **Page backgrounds:** each page's `<body>` tag has a background class. The options are
   `bg-marble-light`, `bg-plaster`, `bg-marble-taupe` and `bg-stone`. Change the class to switch
