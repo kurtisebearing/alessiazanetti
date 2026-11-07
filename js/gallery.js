@@ -65,9 +65,10 @@
     return [p.year, p.medium, p.size].filter(Boolean).join(" · ");
   }
 
-  // "Not for sale" when "available" is false, otherwise the price (if one is set)
+  // Price for works that are for sale. Works with "available": false show no
+  // price (just the small dot next to the title).
   function status(p) {
-    if (p.available === false) return "Not for sale";
+    if (p.available === false) return "";
     return p.price || "";
   }
 
