@@ -5,63 +5,57 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>About — Alessia Zanetti</title>
   <meta name="description" content="Biography and CV of Alessia Zanetti, an Eora/Sydney-based painter working in oil on canvas.">
+  <!-- Social sharing preview (replace image with a real painting) -->
   <meta property="og:title" content="About — Alessia Zanetti">
   <meta property="og:description" content="Biography and CV of Alessia Zanetti, an Eora/Sydney-based painter working in oil on canvas.">
   <meta property="og:image" content="images/paintings/morning-light.jpg">
-  <link rel="preload" href="fonts/jost-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="sidebar">
-    <a class="logo" href="index.html">Alessia Zanetti</a>
-    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">menu</button>
-    <nav class="site-nav" id="site-nav" aria-label="Main">
-      <ul>
-          <li><a href="gallery.html">works</a>
-            <!-- one link per series, filled in from data/paintings.json -->
-            <ul class="subnav" data-series-nav hidden></ul>
-          </li>
-          <li><a href="about.html" aria-current="page">about</a></li>
-          <li><a href="contact.html">contact</a></li>
-      </ul>
-    </nav>
-    <div class="sidebar-foot">
-      <a href="https://www.instagram.com/alessia_zanetti/" target="_blank" rel="noopener">instagram</a>
-      <a href="mailto:alessia_zanetti@yahoo.it">email</a>
-      <p>&copy; <span data-year>2026</span> Alessia Zanetti</p>
+  <header class="site-header">
+    <div class="container">
+      <a class="logo" href="index.html">Alessia Zanetti</a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="about.html" aria-current="page">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
     </div>
   </header>
 
-  <main id="main" class="page">
-    <div class="about">
-      <figure class="portrait">
-        <img src="images/portrait.jpg" alt="Alessia Zanetti" width="1200" height="1600">
-      </figure>
+  <main id="main">
+    <section class="section container about-grid">
+      <!-- Portrait: replace images/portrait.jpg to change it (portrait format, ~1200 × 1600 px) -->
+      <div class="portrait">
+        <img src="images/portrait.jpg" alt="Alessia Zanetti">
+      </div>
 
       <div>
-        <section class="bio">
-          <h1>about</h1>
-          <p>
-            Alessia Zanetti (b. 1986, Italy) is an Eora/Sydney-based artist whose practice has
-            evolved from large-scale commercial murals to oil painting on canvas. Her contemporary
-            works merge the vivid colour and hyperreal clarity developed through her mural practice
-            with a more expressive and gestural approach to painting.
-          </p>
-          <p>
-            Drawing on the eighteenth-century ceiling frescoes of Venice, where she previously lived,
-            Zanetti employs an expressive visual language that moves between abstraction and
-            figuration, using dramatic contrasts of light to heighten and intensify her palettes.
-            Through this approach, Zanetti explores a contemporary sense of place within a
-            hypermobile world, considering how local perception, embodied experience, and the
-            immediate environment shape our perception of reality.
-          </p>
-        </section>
+        <h1>About</h1>
+        <p>
+          Alessia Zanetti (b. 1986, Italy) is an Eora/Sydney-based artist whose practice has
+          evolved from large-scale commercial murals to oil painting on canvas. Her contemporary
+          works merge the vivid colour and hyperreal clarity developed through her mural practice
+          with a more expressive and gestural approach to painting.
+        </p>
+        <p>
+          Drawing on the eighteenth-century ceiling frescoes of Venice, where she previously lived,
+          Zanetti employs an expressive visual language that moves between abstraction and
+          figuration, using dramatic contrasts of light to heighten and intensify her palettes.
+          Through this approach, Zanetti explores a contemporary sense of place within a
+          hypermobile world, considering how local perception, embodied experience, and the
+          immediate environment shape our perception of reality.
+        </p>
 
-        <section class="cv" aria-labelledby="cv">
-          <h2 id="cv">cv</h2>
-          <p>Born in Italy in 1986. Lives and works in Eora/Sydney.</p>
+        <div class="cv">
+          <h2>Curriculum Vitae</h2>
+          <p class="meta">Born in Italy in 1986. Lives and works in Eora/Sydney.</p>
 
           <h3>Education</h3>
           <dl>
@@ -93,10 +87,20 @@
             <dt>2020&ndash;present</dt><dd>Commission artist</dd>
             <dt>2017&ndash;2021</dt><dd>Mural Artist, Apparition Media, Darlinghurst, Sydney</dd>
           </dl>
-        </section>
+        </div>
       </div>
-    </div>
+    </section>
   </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span data-year>2026</span> Alessia Zanetti. All images &copy; the artist.</p>
+      <ul>
+        <li><a href="https://www.instagram.com/alessia_zanetti/" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="mailto:alessia_zanetti@yahoo.it">Email</a></li>
+      </ul>
+    </div>
+  </footer>
 
   <script src="js/gallery.js" defer></script>
 </body>

@@ -4,13 +4,12 @@ A plain HTML/CSS/JS portfolio site: no build step and no framework. You can host
 for free on GitHub Pages.
 
 ```
-index.html          home: full-screen painting with the name over it, then selected works
-gallery.html        "works": all paintings uncropped with captions, lightbox on click
-about.html          portrait, biography, CV
-contact.html        email, Instagram, contact form
-css/style.css       all styling (colours are variables at the top)
-fonts/              Jost typeface, self-hosted (free, SIL Open Font License)
-js/gallery.js       builds the works pages, the series links in the menu, the lightbox
+index.html          home: hero + featured works
+gallery.html        all paintings, filterable by series, with a lightbox
+about.html          biography, artist statement, CV
+contact.html        email link + contact form
+css/style.css       all styling (colours/fonts are variables at the top)
+js/gallery.js       loads the paintings data, builds the grid + lightbox, mobile menu
 data/paintings.json the list of paintings (the only file you edit to add work)
 images/paintings/   large web-optimised images (shown in the lightbox)
 images/thumbs/      small versions for the grid
@@ -34,7 +33,7 @@ when you double-click an `.html` file. Use a tiny local server instead:
 1. Export two JPEGs with the same file name (lowercase, hyphens, no spaces):
    - `images/paintings/my-painting.jpg`: **long edge 1600–2000 px**, quality ~80,
      ideally **under 400 KB**
-   - `images/thumbs/my-painting.jpg`: **long edge ~900 px**, ideally **under 150 KB**
+   - `images/thumbs/my-painting.jpg`: **long edge ~600 px**, ideally **under 80 KB**
 
    You can use [Squoosh](https://squoosh.app) (free, in the browser) or any photo editor.
    Photograph the work straight-on in even daylight and crop out the wall.
@@ -59,29 +58,25 @@ when you double-click an `.html` file. Use a tiny local server instead:
 
 - Separate each entry from the next with a comma, but don't put a comma after the
   last one. A missing or extra comma is the most common reason the gallery stops loading.
-- `"featured": true` puts the painting on the home page (up to 6 are shown).
-- `"available": false` adds "sold" under its caption.
-- `"series"` automatically adds a link for that series under **works** in the menu
-  (for example `gallery.html#lagoon`).
+- `"featured": true` puts the painting on the home page (the first 3 are shown).
+- `"available": false` marks it as sold with a small red dot.
+- `"series"` creates the filter buttons on the gallery page automatically.
 - Paintings are sorted newest first by `year`.
 
 ## 3. Edit the text
 
-- **Bio and CV:** edit `about.html`. To change the portrait, replace `images/portrait.jpg`
-  (portrait format, about 1200 × 1600 px).
-- **Home page image:** the full-screen painting is the `<img>` inside `<header class="hero">`
-  in `index.html`. Point it at any file in `images/paintings/` and update the caption
-  beneath it. A landscape-format work looks best.
+- **Bio and CV:** edit `about.html`. To change the portrait, replace
+  `images/portrait.jpg` (portrait format, about 1200 × 1600 px).
 - **Email and Instagram:** the footer of every page and `contact.html` link to
   `alessia_zanetti@yahoo.it` and `instagram.com/alessia_zanetti`. To change them,
   search all four HTML files and replace every occurrence.
 - **Contact form:** create a free form at [formspree.io](https://formspree.io), then
   replace `YOUR_FORM_ID` in `contact.html`. If you don't want a form, delete it and
   keep only the email link.
-- **Colours:** change the variables in `:root` at the top of `css/style.css`.
+- **Colours and fonts:** change the variables in `:root` at the top of `css/style.css`.
 
-The sidebar menu is repeated in `gallery.html`, `about.html` and `contact.html`. The
-home page has its own menu over the hero image. If you add or rename a page, update all four.
+The header and footer are repeated in all four HTML files. If you change the
+navigation or footer, make the same change in each file.
 
 ## 4. Publish on GitHub Pages
 

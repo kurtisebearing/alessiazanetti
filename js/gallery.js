@@ -1,13 +1,11 @@
 /*
- * Site script: menu, series links, gallery and lightbox.
+ * Gallery + lightbox.
  *
- * Paintings come from data/paintings.json. They are rendered into any element
- * with data-gallery:
+ * Reads data/paintings.json and renders it into any element with
+ * data-gallery. Options (as attributes on that element):
  *   data-gallery="featured"  → only paintings with "featured": true
- *   data-gallery="all"       → everything; gallery.html#<series> shows one series
- *   data-limit="4"           → cap the number shown
- *
- * Each "series" in the JSON automatically gets a link under "works" in the menu.
+ *   data-gallery="all"       → everything, with series filter buttons
+ *   data-limit="3"           → cap the number shown
  *
  * NOTE: fetch() doesn't work when opening files directly (file://).
  * Preview with a local server — e.g. the VS Code "Live Server" extension,
@@ -18,14 +16,13 @@
 
   const DATA_URL = "data/paintings.json";
 
-  // ---- mobile menu ----
-  const sidebar = document.querySelector(".sidebar");
+  // ---- mobile nav toggle (shared by every page) ----
   const toggle = document.querySelector(".nav-toggle");
-  if (sidebar && toggle) {
+  const nav = document.getElementById("site-nav");
+  if (toggle && nav) {
     toggle.addEventListener("click", () => {
-      const open = sidebar.classList.toggle("open");
+      const open = nav.classList.toggle("open");
       toggle.setAttribute("aria-expanded", String(open));
-      toggle.textContent = open ? "close" : "menu";
     });
   }
 
@@ -34,24 +31,12 @@
     el.textContent = new Date().getFullYear();
   });
 
-  const seriesNav = document.querySelector("[data-series-nav]");
   const container = document.querySelector("[data-gallery]");
-  if (!seriesNav && !container) return;
+  if (!container) return;
 
-  const slug = (s) => String(s).toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
-
-  function escapeHTML(s) {
-    return String(s ?? "").replace(/[&<>"']/g, (c) => ({
-      "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
-    }[c]));
-  }
-
-  function captionHTML(p) {
-    const line1 = `<em>${escapeHTML(p.title)}</em>${p.year ? ", " + escapeHTML(p.year) : ""}`;
-    const line2 = [p.medium, p.size].filter(Boolean).map(escapeHTML).join(", ");
-    const sold = p.available === false ? `<br><span class="status">sold</span>` : "";
-    return line1 + (line2 ? "<br>" + line2 : "") + sold;
-  }
+  const mode = container.dataset.gallery;
+  const limit = parseInt(container.dataset.limit, 10) || Infinity;
+  const filtersEl = document.querySelector("[data-filters]");
 
   let all = [];
   let visible = [];
@@ -63,81 +48,68 @@
       return r.json();
     })
     .then((paintings) => {
-      all = paintings.sort((a, b) => (b.year || 0) - (a.year || 0)); // newest first
-      if (seriesNav) buildSeriesNav();
-      if (container) {
-        render();
-        window.addEventListener("hashchange", render);
-      }
+      // newest first
+      all = paintings.sort((a, b) => (b.year || 0) - (a.year || 0));
+      if (mode === "featured") all = all.filter((p) => p.featured);
+      if (filtersEl) buildFilters();
+      render("All");
     })
     .catch((err) => {
-      if (container) {
-        container.innerHTML =
-          "<p>Could not load paintings. If you opened this file directly, " +
-          "preview it through a local server instead (see README).</p>";
-      }
+      container.innerHTML =
+        '<p class="meta">Could not load paintings. If you opened this file directly, ' +
+        "preview it through a local server instead (see README).</p>";
       console.error("Gallery load failed:", err);
     });
 
-  function currentSeries() {
-    return decodeURIComponent(location.hash.slice(1));
+  function meta(p) {
+    return [p.year, p.medium, p.size].filter(Boolean).join(" · ");
   }
 
-  function buildSeriesNav() {
-    const series = [...new Set(all.map((p) => p.series).filter(Boolean))];
-    if (series.length < 2) return;
-    seriesNav.innerHTML = series
-      .map((s) => `<li><a href="gallery.html#${slug(s)}" data-series="${slug(s)}">${escapeHTML(s)}</a></li>`)
+  function escapeHTML(s) {
+    return String(s ?? "").replace(/[&<>"']/g, (c) => ({
+      "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
+    }[c]));
+  }
+
+  function buildFilters() {
+    const series = ["All", ...new Set(all.map((p) => p.series).filter(Boolean))];
+    if (series.length <= 2) return; // nothing worth filtering
+    filtersEl.innerHTML = series
+      .map((s, i) => `<button type="button" aria-pressed="${i === 0}">${escapeHTML(s)}</button>`)
       .join("");
-    seriesNav.hidden = false;
-    markActiveSeries();
-    window.addEventListener("hashchange", markActiveSeries);
-    // close the mobile menu after choosing a series on the gallery page
-    seriesNav.addEventListener("click", () => {
-      if (sidebar && sidebar.classList.contains("open")) toggle.click();
+    filtersEl.addEventListener("click", (e) => {
+      const btn = e.target.closest("button");
+      if (!btn) return;
+      filtersEl.querySelectorAll("button").forEach((b) =>
+        b.setAttribute("aria-pressed", String(b === btn))
+      );
+      render(btn.textContent);
     });
   }
 
-  function markActiveSeries() {
-    const onGallery = container && container.dataset.gallery === "all";
-    seriesNav.querySelectorAll("a").forEach((a) => {
-      a.classList.toggle("active", onGallery && a.dataset.series === currentSeries());
-    });
-  }
+  function render(series) {
+    visible = all
+      .filter((p) => series === "All" || p.series === series)
+      .slice(0, limit);
 
-  function render() {
-    const mode = container.dataset.gallery;
-    const limit = parseInt(container.dataset.limit, 10) || Infinity;
-    let list = all;
-
-    if (mode === "featured") {
-      list = all.filter((p) => p.featured);
-    } else {
-      const wanted = currentSeries();
-      const match = wanted && all.filter((p) => slug(p.series || "") === wanted);
-      if (match && match.length) list = match;
-      const title = document.querySelector("[data-gallery-title]");
-      if (title) {
-        title.textContent = match && match.length ? match[0].series : "works";
-      }
-    }
-
-    visible = list.slice(0, limit);
     container.innerHTML = visible
       .map(
         (p, i) => `
-      <figure class="work">
+      <figure class="card">
         <button type="button" data-index="${i}" aria-label="View ${escapeHTML(p.title)} larger">
-          <img src="${escapeHTML(p.thumb || p.image)}" alt="${escapeHTML(p.alt || p.title)}"
-               loading="lazy" decoding="async">
+          <div class="frame">
+            <img src="${escapeHTML(p.thumb || p.image)}" alt="${escapeHTML(p.alt || p.title)}"
+                 loading="lazy" decoding="async">
+          </div>
+          <figcaption>
+            <div class="title${p.available === false ? " sold" : ""}">${escapeHTML(p.title)}</div>
+            <div class="meta">${escapeHTML(meta(p))}</div>
+          </figcaption>
         </button>
-        <figcaption class="caption">${captionHTML(p)}</figcaption>
       </figure>`
       )
       .join("");
   }
-
-  if (!container) return;
 
   // ---- lightbox (native <dialog>) ----
   const dialog = document.createElement("dialog");
@@ -148,9 +120,9 @@
       <img alt="">
       <div class="lightbox-caption" aria-live="polite"></div>
     </div>
-    <button type="button" class="lb-close">close</button>
-    <button type="button" class="lb-prev" aria-label="Previous painting">prev</button>
-    <button type="button" class="lb-next" aria-label="Next painting">next</button>`;
+    <button type="button" class="lb-close" aria-label="Close">&times;</button>
+    <button type="button" class="lb-prev" aria-label="Previous painting">&#8249;</button>
+    <button type="button" class="lb-next" aria-label="Next painting">&#8250;</button>`;
   document.body.appendChild(dialog);
 
   const lbImg = dialog.querySelector("img");
@@ -161,8 +133,12 @@
     const p = visible[current];
     lbImg.src = p.image;
     lbImg.alt = p.alt || p.title;
-    lbCap.innerHTML = captionHTML(p) + (p.description ? `<p>${escapeHTML(p.description)}</p>` : "");
-    [current + 1, current - 1].forEach((n) => {   // preload neighbours
+    lbCap.innerHTML = `
+      <div class="title">${escapeHTML(p.title)}</div>
+      <div class="meta">${escapeHTML(meta(p))}${p.available === false ? " · Sold" : ""}</div>
+      ${p.description ? `<p>${escapeHTML(p.description)}</p>` : ""}`;
+    // preload neighbours
+    [current + 1, current - 1].forEach((n) => {
       const q = visible[(n + visible.length) % visible.length];
       if (q) new Image().src = q.image;
     });
@@ -179,6 +155,7 @@
   dialog.querySelector(".lb-prev").addEventListener("click", () => show(current - 1));
   dialog.querySelector(".lb-next").addEventListener("click", () => show(current + 1));
 
+  // click on dark background closes
   dialog.addEventListener("click", (e) => {
     if (e.target === dialog || e.target.classList.contains("lightbox-inner")) dialog.close();
   });
@@ -188,6 +165,7 @@
     if (e.key === "ArrowLeft") show(current - 1);
   });
 
+  // basic swipe on touch screens
   let startX = null;
   dialog.addEventListener("touchstart", (e) => (startX = e.touches[0].clientX), { passive: true });
   dialog.addEventListener("touchend", (e) => {
