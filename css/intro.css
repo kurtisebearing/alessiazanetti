@@ -1,0 +1,193 @@
+/* ==========================================================================
+   Landing page (index.html)
+   A full-screen painting with the artist's name. The round menu button
+   (top left) washes the painting out, recolours the name and reveals the menu.
+   ========================================================================== */
+
+@font-face { font-family: "Jost"; font-weight: 500; font-style: normal; font-display: swap;
+  src: url("../fonts/jost-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Jost"; font-weight: 700; font-style: normal; font-display: swap;
+  src: url("../fonts/jost-latin-700-normal.woff2") format("woff2"); }
+
+:root {
+  --intro-accent: #9a8bc8;   /* lilac taken from the violet in the painting */
+  --intro-text: #3b3a3a;
+  --intro-wash: rgba(250, 250, 249, 0.9);
+  --intro-speed: 0.6s;
+  --intro-font: "Jost", "Helvetica Neue", Arial, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body { height: 100%; }
+
+body.intro {
+  margin: 0;
+  overflow: hidden;
+  background: #2a2a2a;
+  font-family: var(--intro-font);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- painting + wash ---------- */
+
+.intro-bg {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;          /* keeps the painting's proportions, crops to fill */
+  object-position: 50% 45%;   /* which part stays in view when cropped */
+}
+
+.intro-wash {
+  position: fixed;
+  inset: 0;
+  background: var(--intro-wash);
+  opacity: 0;
+  transition: opacity var(--intro-speed) ease;
+  pointer-events: none;
+}
+.menu-open .intro-wash { opacity: 1; }
+
+/* ---------- centre: name + menu ---------- */
+
+.intro-centre {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.intro-name {
+  margin: 0;
+  color: #fff;
+  font-weight: 700;
+  font-size: clamp(2.4rem, 7vw, 5.5rem);
+  line-height: 1.05;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-shadow: 0 2px 28px rgba(0, 0, 0, 0.35);
+  transition: color var(--intro-speed) ease, text-shadow var(--intro-speed) ease;
+}
+.menu-open .intro-name {
+  color: var(--intro-accent);
+  text-shadow: none;
+}
+
+.intro-nav {
+  margin-top: 2rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity var(--intro-speed) ease, transform var(--intro-speed) ease,
+              visibility 0s linear var(--intro-speed);
+}
+.menu-open .intro-nav {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition: opacity var(--intro-speed) ease 0.1s, transform var(--intro-speed) ease 0.1s,
+              visibility 0s;
+}
+
+.intro-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem 1.6rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.intro-nav a {
+  color: var(--intro-text);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+.intro-nav a:hover,
+.intro-nav a:focus-visible { color: var(--intro-accent); }
+
+@media (max-width: 520px) {
+  .intro-nav ul { flex-direction: column; gap: 1.1rem; }
+  .intro-nav a { font-size: 0.9rem; }
+}
+
+/* ---------- social icons (bottom) ---------- */
+
+.intro-social {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 2.25rem;
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--intro-speed) ease, visibility 0s linear var(--intro-speed);
+}
+.menu-open .intro-social {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity var(--intro-speed) ease 0.15s, visibility 0s;
+}
+.intro-social a { color: var(--intro-accent); display: block; padding: 0.25rem; }
+.intro-social a:hover { color: var(--intro-text); }
+.intro-social svg { width: 18px; height: 18px; display: block; }
+
+/* ---------- round menu button (top left) ---------- */
+
+.menu-button {
+  position: fixed;
+  top: 1.6rem;
+  left: 1.6rem;
+  z-index: 5;
+  width: 46px;
+  height: 46px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  transition: border-color var(--intro-speed) ease, background var(--intro-speed) ease;
+}
+.menu-button:focus-visible { outline: 2px solid var(--intro-accent); outline-offset: 3px; }
+
+.menu-button span {
+  position: absolute;
+  left: 13px;
+  width: 18px;
+  height: 1.5px;
+  background: #fff;
+  transition: transform 0.35s ease, opacity 0.25s ease, background var(--intro-speed) ease;
+}
+.menu-button span:nth-child(1) { top: 16px; }
+.menu-button span:nth-child(2) { top: 21.5px; }
+.menu-button span:nth-child(3) { top: 27px; }
+
+.menu-open .menu-button { border-color: var(--intro-accent); background: transparent; }
+.menu-open .menu-button span { background: var(--intro-accent); }
+.menu-open .menu-button span:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
+.menu-open .menu-button span:nth-child(2) { opacity: 0; }
+.menu-open .menu-button span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}

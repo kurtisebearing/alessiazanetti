@@ -4,11 +4,13 @@ A plain HTML/CSS/JS portfolio site: no build step and no framework. You can host
 for free on GitHub Pages.
 
 ```
-index.html          home: hero + featured works
+index.html          landing page: full-screen painting, round menu button (top left)
+home.html           home: hero + featured works
 gallery.html        all paintings, filterable by series, with a lightbox
 about.html          biography, artist statement, CV
 contact.html        email link + contact form
-css/style.css       all styling (colours/fonts are variables at the top)
+css/intro.css       landing page styling only
+css/style.css       all other styling (colours/fonts are variables at the top)
 js/gallery.js       loads the paintings data, builds the grid + lightbox, mobile menu
 data/paintings.json the list of paintings (the only file you edit to add work)
 images/paintings/   large web-optimised images (shown in the lightbox)
@@ -74,6 +76,11 @@ when you double-click an `.html` file. Use a tiny local server instead:
   (form `xgaabarr`), which forwards them by email. To use a different form, change the
   `action` URL on the `<form>` in `contact.html`.
 - **Colours and fonts:** change the variables in `:root` at the top of `css/style.css`.
+- **Landing page painting:** in `index.html`, change the `src` of `<img class="intro-bg">`
+  and the matching `preload` link. The painting fills the screen and keeps its proportions.
+  `object-position` in `css/intro.css` controls which part stays in view. When the menu is
+  open, the name takes the lilac colour set by `--intro-accent` in `css/intro.css`.
+  Use a large image (2000 px or more on the long edge) so it stays sharp on big screens.
 - **Page backgrounds:** each page's `<body>` tag has a background class. The options are
   `bg-marble-light`, `bg-plaster`, `bg-marble-taupe` and `bg-stone`. Change the class to switch
   backgrounds, or remove it for a plain background. Images live in `images/backgrounds/`.
