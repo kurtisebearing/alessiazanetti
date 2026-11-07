@@ -65,6 +65,12 @@
     return [p.year, p.medium, p.size].filter(Boolean).join(" · ");
   }
 
+  // "Not for sale" when "available" is false, otherwise the price (if one is set)
+  function status(p) {
+    if (p.available === false) return "Not for sale";
+    return p.price || "";
+  }
+
   function escapeHTML(s) {
     return String(s ?? "").replace(/[&<>"']/g, (c) => ({
       "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
@@ -104,6 +110,7 @@
           <figcaption>
             <div class="title${p.available === false ? " sold" : ""}">${escapeHTML(p.title)}</div>
             <div class="meta">${escapeHTML(meta(p))}</div>
+            ${status(p) ? `<div class="price">${escapeHTML(status(p))}</div>` : ""}
           </figcaption>
         </button>
       </figure>`
@@ -135,7 +142,7 @@
     lbImg.alt = p.alt || p.title;
     lbCap.innerHTML = `
       <div class="title">${escapeHTML(p.title)}</div>
-      <div class="meta">${escapeHTML(meta(p))}${p.available === false ? " · Sold" : ""}</div>
+      <div class="meta">${escapeHTML([meta(p), status(p)].filter(Boolean).join(" · "))}</div>
       ${p.description ? `<p>${escapeHTML(p.description)}</p>` : ""}`;
     // preload neighbours
     [current + 1, current - 1].forEach((n) => {

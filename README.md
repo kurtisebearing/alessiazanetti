@@ -54,6 +54,7 @@ when you double-click an `.html` file. Use a tiny local server instead:
   "alt": "Short description of what the painting shows, for screen readers",
   "description": "Optional sentence shown in the lightbox.",
   "available": true,
+  "price": "$1,200",
   "featured": false
 }
 ```
@@ -61,7 +62,8 @@ when you double-click an `.html` file. Use a tiny local server instead:
 - Separate each entry from the next with a comma, but don't put a comma after the
   last one. A missing or extra comma is the most common reason the gallery stops loading.
 - `"featured": true` puts the painting on the home page (the first 3 are shown).
-- `"available": false` marks it as sold with a small red dot.
+- `"available": false` marks it **Not for sale** with a small red dot.
+- `"price": "$1,700"` shows a price under available works. Leave it as `""` to show no price.
 - `"series"` creates the filter buttons on the gallery page automatically.
 - Paintings are sorted newest first by `year`.
 

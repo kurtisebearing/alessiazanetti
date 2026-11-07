@@ -245,6 +245,7 @@ h3 { font-size: 1.15rem; }
 .card figcaption { padding-top: 0.75rem; }
 .card .title { font-family: var(--font-display); font-size: 1.05rem; }
 .card .meta { color: var(--muted); font-size: 0.85rem; }
+.card .price { font-size: 0.85rem; font-weight: 600; margin-top: 0.15rem; }
 .sold::after {
   content: "";
   display: inline-block;
