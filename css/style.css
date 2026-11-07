@@ -36,6 +36,24 @@ body {
 
 main { flex: 1; }
 
+/* ---------- Page backgrounds ----------
+   A fixed layer behind the page. background-size: cover keeps each image's
+   proportions and crops the edges to fill any screen size.
+   Choose a background per page with a class on <body>, e.g. <body class="bg-stone">. */
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: var(--bg) var(--bg-image, none) center / cover no-repeat;
+  pointer-events: none;
+}
+.bg-marble-light { --bg-image: url("../images/backgrounds/marble-light.jpg"); }
+.bg-plaster      { --bg-image: url("../images/backgrounds/plaster.jpg"); }
+.bg-marble-taupe { --bg-image: url("../images/backgrounds/marble-taupe.jpg"); }
+.bg-stone        { --bg-image: url("../images/backgrounds/stone.jpg"); }
+
 img { max-width: 100%; height: auto; display: block; }
 
 a { color: inherit; text-underline-offset: 0.2em; }

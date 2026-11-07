@@ -74,6 +74,10 @@ when you double-click an `.html` file. Use a tiny local server instead:
   replace `YOUR_FORM_ID` in `contact.html`. If you don't want a form, delete it and
   keep only the email link.
 - **Colours and fonts:** change the variables in `:root` at the top of `css/style.css`.
+- **Page backgrounds:** each page's `<body>` tag has a background class. The options are
+  `bg-marble-light`, `bg-plaster`, `bg-marble-taupe` and `bg-stone`. Change the class to switch
+  backgrounds, or remove it for a plain background. Images live in `images/backgrounds/`.
+  They always fill the screen and keep their proportions, so only the edges get cropped.
 
 The header and footer are repeated in all four HTML files. If you change the
 navigation or footer, make the same change in each file.
