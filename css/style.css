@@ -297,7 +297,14 @@ h3 { font-size: 1.15rem; }
   margin: 2rem 0;
 }
 
-.cv dl { display: grid; grid-template-columns: 5rem 1fr; gap: 0.4rem 1rem; margin: 0 0 2rem; }
+.cv h2 { margin-top: 2.5rem; }
+.cv h3 { margin: 2rem 0 0.75rem; }
+.cv dl { display: grid; grid-template-columns: 7.5rem 1fr; gap: 0.5rem 1rem; margin: 0; }
+.cv dt { white-space: nowrap; }
+@media (max-width: 480px) {
+  .cv dl { grid-template-columns: 1fr; gap: 0; }
+  .cv dl dd { margin-bottom: 0.6rem; }
+}
 .cv dt { color: var(--muted); }
 .cv dd { margin: 0; }
 
