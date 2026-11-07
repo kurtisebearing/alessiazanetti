@@ -67,8 +67,9 @@ when you double-click an `.html` file. Use a tiny local server instead:
 
 - **Bio, statement and CV:** edit `about.html` and replace everything in `[brackets]`.
   To add a portrait, save `images/portrait.jpg` and uncomment the `<img>` line.
-- **Email and Instagram:** search all files for `hello@example.com` and
-  `instagram.com/` and replace them with the real address and profile link.
+- **Email and Instagram:** the footer of every page and `contact.html` link to
+  `alessia_zanetti@yahoo.it` and `instagram.com/alessia_zanetti`. To change them,
+  search all four HTML files and replace every occurrence.
 - **Contact form:** create a free form at [formspree.io](https://formspree.io), then
   replace `YOUR_FORM_ID` in `contact.html`. If you don't want a form, delete it and
   keep only the email link.
