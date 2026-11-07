@@ -3,6 +3,11 @@
    Edit the variables below to change the whole site's look.
    ========================================================================== */
 
+/* Montserrat (self-hosted, SIL Open Font License) is used for the artist's name
+   everywhere, matching the landing page. */
+@font-face { font-family: "Montserrat"; font-weight: 600; font-style: normal; font-display: swap;
+  src: url("../fonts/montserrat-latin-600-normal.woff2") format("woff2"); }
+
 :root {
   --bg: #faf9f7;
   --text: #1d1d1b;
@@ -12,6 +17,7 @@
 
   --font-body: "Helvetica Neue", Arial, sans-serif;
   --font-display: Georgia, "Times New Roman", serif;
+  --font-name: "Montserrat", "Helvetica Neue", Arial, sans-serif;  /* the artist's name */
 
   --max-width: 1200px;
   --gap: clamp(1rem, 2.5vw, 2rem);
@@ -95,11 +101,16 @@ h3 { font-size: 1.15rem; }
   padding-block: 1.25rem;
 }
 
+.logo,
+.artist-name {
+  font-family: var(--font-name);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
 .logo {
-  font-family: var(--font-display);
-  font-size: 1.4rem;
+  font-size: 1.05rem;
   text-decoration: none;
-  letter-spacing: 0.02em;
 }
 
 .nav-toggle {
