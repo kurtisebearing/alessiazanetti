@@ -84,7 +84,7 @@
     "description": "",
     "available": true,
     "featured": false,
-    "price": "$1,700"
+    "price": ""
   },
   {
     "id": "everything-is-fine",
@@ -114,7 +114,7 @@
     "description": "",
     "available": true,
     "featured": false,
-    "price": "$900"
+    "price": ""
   },
   {
     "id": "because-you-deserve-it",
@@ -128,7 +128,7 @@
     "alt": "Seen from above, a figure curled in a pale bathtub, its spine and limbs rendered in translucent blues, the plughole below",
     "description": "",
     "available": true,
-    "price": "$800",
+    "price": "",
     "featured": false
   }
 ]
