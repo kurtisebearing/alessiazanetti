@@ -5,56 +5,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Alessia Zanetti</title>
   <meta name="description" content="Paintings by Alessia Zanetti, an Eora/Sydney-based artist working in oil on canvas.">
-  <!-- Social sharing preview (replace image with a real painting) -->
   <meta property="og:title" content="Alessia Zanetti">
   <meta property="og:description" content="Paintings by Alessia Zanetti, an Eora/Sydney-based artist working in oil on canvas.">
   <meta property="og:image" content="https://alessiazanetti.com/images/paintings/untitled-2.jpg">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="preload" href="images/paintings/untitled-2.jpg" as="image">
+  <link rel="preload" href="fonts/montserrat-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/intro.css">
+  <!-- without JavaScript, show the menu straight away -->
+  <noscript><style>.intro-wash, .intro-nav, .intro-social { opacity: 1 !important; visibility: visible !important; transform: none !important; } .intro-name { color: var(--intro-ink) !important; text-shadow: none !important; } .menu-button { display: none; }</style></noscript>
 </head>
-<body class="bg-marble-light">
-  <a class="skip-link" href="#main">Skip to content</a>
+<body class="intro">
+  <!--
+    Landing page. To change the painting, point the <img> below (and the preload
+    link above) at another file in images/paintings/. It always fills the screen
+    and keeps its proportions; object-position in css/intro.css sets which part
+    stays in view.
+  -->
+  <img class="intro-bg" src="images/paintings/untitled-2.jpg" alt="">
+  <div class="intro-wash"></div>
 
-  <header class="site-header">
-    <div class="container">
-      <a class="logo" href="index.html">Alessia Zanetti</a>
-      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
-      <nav class="site-nav" id="site-nav" aria-label="Main">
-        <ul>
-          <li><a href="index.html" aria-current="page">Home</a></li>
-          <li><a href="gallery.html">Gallery</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+  <button class="menu-button" type="button" aria-expanded="false" aria-controls="intro-nav">
+    <span></span><span></span><span></span>
+    <b class="visually-hidden">Open menu</b>
+  </button>
 
-  <main id="main">
-    <section class="hero container">
-      <h1>Alessia Zanetti</h1>
-      <a class="button" href="gallery.html">View the work</a>
-    </section>
-
-    <section class="section container" aria-labelledby="featured-heading">
-      <div class="section-head">
-        <h2 id="featured-heading">Selected works</h2>
-        <a href="gallery.html">All paintings &rarr;</a>
-      </div>
-      <!-- Paintings with "featured": true in data/paintings.json appear here -->
-      <div class="grid" data-gallery="featured" data-limit="3"></div>
-    </section>
+  <main class="intro-centre">
+    <h1 class="intro-name">Alessia Zanetti</h1>
+    <nav class="intro-nav" id="intro-nav" aria-label="Main">
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
   </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <p>&copy; <span data-year>2026</span> Alessia Zanetti. All images &copy; the artist.</p>
-      <ul>
-        <li><a href="https://www.instagram.com/alessia_zanetti/" target="_blank" rel="noopener">Instagram</a></li>
-        <li><a href="mailto:alessia_zanetti@yahoo.it">Email</a></li>
-      </ul>
-    </div>
-  </footer>
+  <div class="intro-social">
+    <a href="https://www.instagram.com/alessia_zanetti/" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="0.6" fill="currentColor"/></svg>
+    </a>
+    <a href="mailto:alessia_zanetti@yahoo.it" aria-label="Email">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg>
+    </a>
+  </div>
 
-  <script src="js/gallery.js" defer></script>
+  <script src="js/intro.js" defer></script>
 </body>
 </html>
