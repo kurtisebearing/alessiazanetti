@@ -5,56 +5,57 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Alessia Zanetti</title>
   <meta name="description" content="Paintings by Alessia Zanetti, an Eora/Sydney-based artist working in oil on canvas.">
-  <!-- Social sharing preview (replace image with a real painting) -->
   <meta property="og:title" content="Alessia Zanetti">
   <meta property="og:description" content="Paintings by Alessia Zanetti, an Eora/Sydney-based artist working in oil on canvas.">
   <meta property="og:image" content="images/paintings/morning-light.jpg">
+  <link rel="preload" href="fonts/jost-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header">
-    <div class="container">
-      <a class="logo" href="index.html">Alessia Zanetti</a>
-      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
-      <nav class="site-nav" id="site-nav" aria-label="Main">
-        <ul>
-          <li><a href="index.html" aria-current="page">Home</a></li>
-          <li><a href="gallery.html">Gallery</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
+  <!-- Full-screen opening image. To change it, swap the src below (and the caption)
+       for any painting in images/paintings/ — a landscape-format work looks best. -->
+  <header class="hero">
+    <img src="images/paintings/evening-shore.jpg" alt="" fetchpriority="high">
+    <nav class="hero-bar" aria-label="Main">
+      <ul>
+        <li><a href="gallery.html">works</a></li>
+        <li><a href="about.html">about</a></li>
+        <li><a href="contact.html">contact</a></li>
+        <li><a href="https://www.instagram.com/alessia_zanetti/" target="_blank" rel="noopener">instagram</a></li>
+      </ul>
+    </nav>
+    <h1>Alessia<br>Zanetti</h1>
+    <p class="hero-caption"><em>Evening Shore</em>, 2024, oil on canvas</p>
+    <a class="scroll-cue" href="#main">selected works &darr;</a>
   </header>
 
   <main id="main">
-    <section class="hero container">
-      <h1>Alessia Zanetti</h1>
-      <p>Eora/Sydney-based artist working in oil on canvas, moving between abstraction and figuration through vivid colour and dramatic light.</p>
-      <a class="button" href="gallery.html">View the work</a>
-    </section>
+    <div class="home-body">
+      <p class="intro">
+        Eora/Sydney-based artist working in oil on canvas. Drawing on the vivid colour of her
+        mural practice and the ceiling frescoes of Venice, her paintings move between abstraction
+        and figuration through dramatic contrasts of light.
+        <a href="about.html">About Alessia</a>
+      </p>
 
-    <section class="section container" aria-labelledby="featured-heading">
       <div class="section-head">
-        <h2 id="featured-heading">Selected works</h2>
-        <a href="gallery.html">All paintings &rarr;</a>
+        <h2>selected works</h2>
+        <a href="gallery.html">all works &rarr;</a>
       </div>
       <!-- Paintings with "featured": true in data/paintings.json appear here -->
-      <div class="grid" data-gallery="featured" data-limit="3"></div>
-    </section>
-  </main>
+      <div class="works" data-gallery="featured" data-limit="6"></div>
+    </div>
 
-  <footer class="site-footer">
-    <div class="container">
+    <footer class="home-foot">
       <p>&copy; <span data-year>2026</span> Alessia Zanetti. All images &copy; the artist.</p>
       <ul>
-        <li><a href="https://www.instagram.com/alessia_zanetti/" target="_blank" rel="noopener">Instagram</a></li>
-        <li><a href="mailto:alessia_zanetti@yahoo.it">Email</a></li>
+        <li><a href="https://www.instagram.com/alessia_zanetti/" target="_blank" rel="noopener">instagram</a></li>
+        <li><a href="mailto:alessia_zanetti@yahoo.it">email</a></li>
       </ul>
-    </div>
-  </footer>
+    </footer>
+  </main>
 
   <script src="js/gallery.js" defer></script>
 </body>

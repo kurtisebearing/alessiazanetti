@@ -3,51 +3,43 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Gallery — Alessia Zanetti</title>
-  <meta name="description" content="The complete catalogue of paintings by Alessia Zanetti.">
-  <!-- Social sharing preview (replace image with a real painting) -->
-  <meta property="og:title" content="Gallery — Alessia Zanetti">
-  <meta property="og:description" content="The complete catalogue of paintings by Alessia Zanetti.">
+  <title>Works — Alessia Zanetti</title>
+  <meta name="description" content="Paintings by Alessia Zanetti.">
+  <meta property="og:title" content="Works — Alessia Zanetti">
+  <meta property="og:description" content="Paintings by Alessia Zanetti.">
   <meta property="og:image" content="images/paintings/morning-light.jpg">
+  <link rel="preload" href="fonts/jost-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header">
-    <div class="container">
-      <a class="logo" href="index.html">Alessia Zanetti</a>
-      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
-      <nav class="site-nav" id="site-nav" aria-label="Main">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="gallery.html" aria-current="page">Gallery</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
+  <header class="sidebar">
+    <a class="logo" href="index.html">Alessia Zanetti</a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">menu</button>
+    <nav class="site-nav" id="site-nav" aria-label="Main">
+      <ul>
+          <li><a href="gallery.html" aria-current="page">works</a>
+            <!-- one link per series, filled in from data/paintings.json -->
+            <ul class="subnav" data-series-nav hidden></ul>
+          </li>
+          <li><a href="about.html">about</a></li>
+          <li><a href="contact.html">contact</a></li>
+      </ul>
+    </nav>
+    <div class="sidebar-foot">
+      <a href="https://www.instagram.com/alessia_zanetti/" target="_blank" rel="noopener">instagram</a>
+      <a href="mailto:alessia_zanetti@yahoo.it">email</a>
+      <p>&copy; <span data-year>2026</span> Alessia Zanetti</p>
     </div>
   </header>
 
-  <main id="main">
-    <section class="section container">
-      <h1>Gallery</h1>
-      <p class="meta"><span class="sold"></span> = sold</p>
-      <div class="filters" data-filters aria-label="Filter by series"></div>
-      <!-- Every painting in data/paintings.json, newest first -->
-      <div class="grid" data-gallery="all"></div>
-    </section>
+  <main id="main" class="page">
+    <h1 data-gallery-title>works</h1>
+    <!-- Every painting in data/paintings.json, newest first.
+         gallery.html#<series-name> shows a single series. -->
+    <div class="works" data-gallery="all"></div>
   </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <p>&copy; <span data-year>2026</span> Alessia Zanetti. All images &copy; the artist.</p>
-      <ul>
-        <li><a href="https://www.instagram.com/alessia_zanetti/" target="_blank" rel="noopener">Instagram</a></li>
-        <li><a href="mailto:alessia_zanetti@yahoo.it">Email</a></li>
-      </ul>
-    </div>
-  </footer>
 
   <script src="js/gallery.js" defer></script>
 </body>
