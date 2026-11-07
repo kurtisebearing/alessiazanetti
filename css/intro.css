@@ -11,7 +11,6 @@
 
 :root {
   --intro-ink: #111;         /* name, menu icon and links when the menu is open */
-  --intro-accent: #9a8bc8;   /* lilac hover colour, taken from the painting */
   --intro-text: #1f1f1f;
   --intro-wash: rgba(250, 250, 249, 0.62);   /* raise towards 1 for a whiter overlay */
   --intro-speed: 0.6s;
@@ -146,7 +145,10 @@ body.intro {
   transition: opacity var(--intro-speed) ease 0.15s, visibility 0s;
 }
 .intro-social a { color: var(--intro-ink); display: block; padding: 0.25rem; }
-.intro-social a:hover { color: var(--intro-accent); }
+.intro-social a:hover,
+.intro-social a:focus-visible { color: #fff; }
+.intro-social a:hover svg,
+.intro-social a:focus-visible svg { filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.55)); }
 .intro-social svg { filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.9)); }
 .intro-social svg { width: 18px; height: 18px; display: block; }
 

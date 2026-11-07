@@ -3,8 +3,11 @@
    Edit the variables below to change the whole site's look.
    ========================================================================== */
 
-/* Montserrat (self-hosted, SIL Open Font License) is used for the artist's name
-   everywhere, matching the landing page. */
+/* Montserrat (self-hosted, SIL Open Font License) is used for all text. */
+@font-face { font-family: "Montserrat"; font-weight: 400; font-style: normal; font-display: swap;
+  src: url("../fonts/montserrat-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Montserrat"; font-weight: 400; font-style: italic; font-display: swap;
+  src: url("../fonts/montserrat-latin-400-italic.woff2") format("woff2"); }
 @font-face { font-family: "Montserrat"; font-weight: 600; font-style: normal; font-display: swap;
   src: url("../fonts/montserrat-latin-600-normal.woff2") format("woff2"); }
 
@@ -15,9 +18,9 @@
   --line: #e4e1db;
   --accent: #8a3b2a;
 
-  --font-body: "Helvetica Neue", Arial, sans-serif;
-  --font-display: Georgia, "Times New Roman", serif;
-  --font-name: "Montserrat", "Helvetica Neue", Arial, sans-serif;  /* the artist's name */
+  --font-body: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  --font-display: var(--font-body);   /* headings */
+  --font-name: var(--font-body);      /* the artist's name */
 
   --max-width: 1200px;
   --gap: clamp(1rem, 2.5vw, 2rem);
@@ -286,6 +289,7 @@ h3 { font-size: 1.15rem; }
 .lightbox-caption .title { font-family: var(--font-display); font-size: 1.15rem; }
 .lightbox-caption .meta { color: #b3afa7; }
 .lightbox button {
+  font-family: inherit;
   position: absolute;
   background: none;
   border: 0;

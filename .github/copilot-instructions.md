@@ -19,6 +19,8 @@ This is a static portfolio website for the painter Alessia Zanetti, hosted on Gi
 - Styling lives only in `css/style.css`. Reuse the CSS custom properties in `:root`
   (`--bg`, `--text`, `--muted`, `--line`, `--accent`, `--font-display`, `--font-body`)
   instead of new hard-coded colours. Don't use inline styles.
+- All text uses Montserrat, self-hosted in `fonts/` (400, 400 italic, 500 and 600). Don't add
+  other typefaces or load fonts from Google.
 - Keep it accessible: every image needs meaningful `alt` text, use semantic elements
   (header/nav/main/footer/figure), and keep everything keyboard-usable.
 - Keep the design minimal so the paintings stay the focus.
