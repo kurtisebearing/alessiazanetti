@@ -12,7 +12,7 @@ This is a static portfolio website for the painter Alessia Zanetti, hosted on Gi
   `images/thumbs/<id>.jpg`. File names are lowercase and hyphenated.
 - `index.html` is a standalone landing page: a full-screen painting and a round menu button
   that washes the image out and reveals the menu. It uses only `css/intro.css` and
-  `js/intro.js`, plus the Jost font in `fonts/`. Every other page uses `css/style.css`.
+  `js/intro.js`, plus the Montserrat font in `fonts/`. Every other page uses `css/style.css`.
 - The header (nav) and footer are duplicated in `home.html`, `gallery.html`,
   `about.html` and `contact.html`. When you change one, change all of them, and set
   `aria-current="page"` on the current page's nav link.

@@ -79,7 +79,8 @@ when you double-click an `.html` file. Use a tiny local server instead:
 - **Landing page painting:** in `index.html`, change the `src` of `<img class="intro-bg">`
   and the matching `preload` link. The painting fills the screen and keeps its proportions.
   `object-position` in `css/intro.css` controls which part stays in view. When the menu is
-  open, the name takes the lilac colour set by `--intro-accent` in `css/intro.css`.
+  open, the painting is softened by a white wash: `--intro-wash` in `css/intro.css` sets how
+  strong it is, and `--intro-ink` sets the colour of the name and menu.
   Use a large image (2000 px or more on the long edge) so it stays sharp on big screens.
 - **Page backgrounds:** each page's `<body>` tag has a background class. The options are
   `bg-marble-light`, `bg-plaster`, `bg-marble-taupe` and `bg-stone`. Change the class to switch

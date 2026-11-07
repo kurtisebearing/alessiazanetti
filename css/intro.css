@@ -4,17 +4,18 @@
    (top left) washes the painting out, recolours the name and reveals the menu.
    ========================================================================== */
 
-@font-face { font-family: "Jost"; font-weight: 500; font-style: normal; font-display: swap;
-  src: url("../fonts/jost-latin-500-normal.woff2") format("woff2"); }
-@font-face { font-family: "Jost"; font-weight: 700; font-style: normal; font-display: swap;
-  src: url("../fonts/jost-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Montserrat"; font-weight: 500; font-style: normal; font-display: swap;
+  src: url("../fonts/montserrat-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Montserrat"; font-weight: 600; font-style: normal; font-display: swap;
+  src: url("../fonts/montserrat-latin-600-normal.woff2") format("woff2"); }
 
 :root {
-  --intro-accent: #9a8bc8;   /* lilac taken from the violet in the painting */
-  --intro-text: #3b3a3a;
-  --intro-wash: rgba(250, 250, 249, 0.9);
+  --intro-ink: #111;         /* name, menu icon and links when the menu is open */
+  --intro-accent: #9a8bc8;   /* lilac hover colour, taken from the painting */
+  --intro-text: #1f1f1f;
+  --intro-wash: rgba(250, 250, 249, 0.62);   /* raise towards 1 for a whiter overlay */
   --intro-speed: 0.6s;
-  --intro-font: "Jost", "Helvetica Neue", Arial, sans-serif;
+  --intro-font: "Montserrat", "Helvetica Neue", Arial, sans-serif;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -66,16 +67,16 @@ body.intro {
 .intro-name {
   margin: 0;
   color: #fff;
-  font-weight: 700;
-  font-size: clamp(2.4rem, 7vw, 5.5rem);
-  line-height: 1.05;
-  letter-spacing: 0.06em;
+  font-weight: 600;
+  font-size: clamp(2.1rem, 6.2vw, 5rem);
+  line-height: 1.1;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   text-shadow: 0 2px 28px rgba(0, 0, 0, 0.35);
   transition: color var(--intro-speed) ease, text-shadow var(--intro-speed) ease;
 }
 .menu-open .intro-name {
-  color: var(--intro-accent);
+  color: var(--intro-ink);
   text-shadow: none;
 }
 
@@ -107,9 +108,10 @@ body.intro {
 .intro-nav a {
   color: var(--intro-text);
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 0.8rem;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.16em;
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.9);  /* keeps links readable over the painting */
   text-transform: uppercase;
   transition: color 0.2s;
 }
@@ -140,45 +142,47 @@ body.intro {
   visibility: visible;
   transition: opacity var(--intro-speed) ease 0.15s, visibility 0s;
 }
-.intro-social a { color: var(--intro-accent); display: block; padding: 0.25rem; }
-.intro-social a:hover { color: var(--intro-text); }
+.intro-social a { color: var(--intro-ink); display: block; padding: 0.25rem; }
+.intro-social a:hover { color: var(--intro-accent); }
+.intro-social svg { filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.9)); }
 .intro-social svg { width: 18px; height: 18px; display: block; }
 
-/* ---------- round menu button (top left) ---------- */
+/* ---------- menu button (top left) ---------- */
 
 .menu-button {
   position: fixed;
-  top: 1.6rem;
-  left: 1.6rem;
+  top: 1.25rem;
+  left: 1.25rem;
   z-index: 5;
-  width: 46px;
-  height: 46px;
+  width: 56px;
+  height: 56px;
   padding: 0;
-  border: 1px solid rgba(255, 255, 255, 0.85);
-  border-radius: 50%;
-  background: rgba(0, 0, 0, 0.08);
+  border: 0;
+  background: none;
   cursor: pointer;
-  transition: border-color var(--intro-speed) ease, background var(--intro-speed) ease;
+  filter: drop-shadow(0 1px 6px rgba(0, 0, 0, 0.35));   /* visible on light or dark paint */
+  transition: filter var(--intro-speed) ease;
 }
-.menu-button:focus-visible { outline: 2px solid var(--intro-accent); outline-offset: 3px; }
+.menu-button:focus-visible { outline: 2px solid var(--intro-ink); outline-offset: 2px; }
 
 .menu-button span {
   position: absolute;
-  left: 13px;
-  width: 18px;
-  height: 1.5px;
+  left: 12px;
+  width: 32px;
+  height: 2.5px;
+  border-radius: 2px;
   background: #fff;
   transition: transform 0.35s ease, opacity 0.25s ease, background var(--intro-speed) ease;
 }
-.menu-button span:nth-child(1) { top: 16px; }
-.menu-button span:nth-child(2) { top: 21.5px; }
-.menu-button span:nth-child(3) { top: 27px; }
+.menu-button span:nth-child(1) { top: 17px; }
+.menu-button span:nth-child(2) { top: 27px; }
+.menu-button span:nth-child(3) { top: 37px; }
 
-.menu-open .menu-button { border-color: var(--intro-accent); background: transparent; }
-.menu-open .menu-button span { background: var(--intro-accent); }
-.menu-open .menu-button span:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
+.menu-open .menu-button { filter: none; }
+.menu-open .menu-button span { background: var(--intro-ink); }
+.menu-open .menu-button span:nth-child(1) { transform: translateY(10px) rotate(45deg); }
 .menu-open .menu-button span:nth-child(2) { opacity: 0; }
-.menu-open .menu-button span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
+.menu-open .menu-button span:nth-child(3) { transform: translateY(-10px) rotate(-45deg); }
 
 .visually-hidden {
   position: absolute !important;
