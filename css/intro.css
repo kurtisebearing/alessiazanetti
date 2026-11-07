@@ -113,10 +113,13 @@ body.intro {
   letter-spacing: 0.16em;
   text-shadow: 0 0 12px rgba(255, 255, 255, 0.9);  /* keeps links readable over the painting */
   text-transform: uppercase;
-  transition: color 0.2s;
+  transition: color 0.2s, text-shadow 0.2s;
 }
 .intro-nav a:hover,
-.intro-nav a:focus-visible { color: var(--intro-accent); }
+.intro-nav a:focus-visible {
+  color: #fff;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.55);  /* dark halo so white text stays readable */
+}
 
 @media (max-width: 520px) {
   .intro-nav ul { flex-direction: column; gap: 1.1rem; }
