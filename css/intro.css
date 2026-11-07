@@ -125,6 +125,28 @@ body.intro {
   .intro-nav a { font-size: 0.9rem; }
 }
 
+/* The name is also a button that opens the menu. The padding makes the
+   clickable area extend well beyond the letters; the negative margin
+   cancels it so the layout doesn't move. */
+.name-trigger {
+  display: inline-block;
+  --hit-x: clamp(1rem, 4vw, 3rem);
+  margin: -2.5rem calc(-1 * var(--hit-x));
+  padding: 2.5rem var(--hit-x);
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  text-shadow: inherit;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+.name-trigger:hover { opacity: 0.88; }
+.name-trigger:focus-visible { outline: 2px solid #fff; outline-offset: -1.5rem; }
+.menu-open .name-trigger { cursor: default; opacity: 1; }
+
 /* ---------- social icons (bottom) ---------- */
 
 .intro-social {
