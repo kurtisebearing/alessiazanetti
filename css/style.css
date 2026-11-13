@@ -12,7 +12,7 @@
   src: url("../fonts/montserrat-latin-600-normal.woff2") format("woff2"); }
 
 :root {
-  --bg: #faf9f7;
+  --bg: #faf9f7;      /* soft off-white page background */
   --text: #1d1d1b;
   --muted: #6f6c66;
   --line: #e4e1db;

@@ -84,10 +84,9 @@ when you double-click an `.html` file. Use a tiny local server instead:
   open, the painting is softened by a white wash: `--intro-wash` in `css/intro.css` sets how
   strong it is, and `--intro-ink` sets the colour of the name and menu.
   Use a large image (2000 px or more on the long edge) so it stays sharp on big screens.
-- **Page backgrounds:** each page's `<body>` tag has a background class. The options are
-  `bg-marble-light`, `bg-plaster`, `bg-marble-taupe` and `bg-stone`. Change the class to switch
-  backgrounds, or remove it for a plain background. Images live in `images/backgrounds/`.
-  They always fill the screen and keep their proportions, so only the edges get cropped.
+- **Page backgrounds:** pages use a plain off-white (`--bg` in `css/style.css`). To use a
+  textured background instead, add a class to a page's `<body>` tag: `bg-marble-light`,
+  `bg-plaster`, `bg-marble-taupe` or `bg-stone`. The images live in `images/backgrounds/`.
 
 The header and footer are repeated in all four HTML files. If you change the
 navigation or footer, make the same change in each file.
