@@ -7,7 +7,8 @@ This is a static portfolio website for the painter Alessia Zanetti, hosted on Gi
 - All painting data lives in `data/paintings.json`. To add or edit a painting, change
   that file and never hard-code painting cards in HTML. `js/gallery.js` renders them.
   Fields: id, title, year, medium, size, series, image, thumb, alt, description,
-  available, featured.
+  available, price, featured, and optional `details` (close-ups shown below the painting
+  in the lightbox, never as separate gallery items).
 - Image paths: full size goes in `images/paintings/<id>.jpg` and the thumbnail in
   `images/thumbs/<id>.jpg`. File names are lowercase and hyphenated.
 - `index.html` is a standalone landing page: a full-screen painting and a round menu button

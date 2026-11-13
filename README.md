@@ -62,6 +62,14 @@ when you double-click an `.html` file. Use a tiny local server instead:
 - Separate each entry from the next with a comma, but don't put a comma after the
   last one. A missing or extra comma is the most common reason the gallery stops loading.
 - `"featured": true` puts the painting on the home page (the first 3 are shown).
+- `"details"` (optional) adds close-ups or extra views. They appear below the painting when
+  someone opens it and scrolls down, not in the gallery grid:
+
+  ```json
+  "details": [
+    { "image": "images/paintings/my-painting-detail-1.jpg", "label": "Detail 1", "alt": "Close-up of ..." }
+  ]
+  ```
 - `"available": false` shows **Not for sale** under the caption, with a small red dot.
 - `"price": "$1,700"` shows a price under available works. Leave it as `""` to show no price.
 - `"series"` creates the filter buttons on the gallery page automatically.

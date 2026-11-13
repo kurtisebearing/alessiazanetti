@@ -127,6 +127,7 @@
       <img alt="">
       <div class="lightbox-caption" aria-live="polite"></div>
     </div>
+    <section class="lightbox-details" aria-label="Details" hidden></section>
     <button type="button" class="lb-close" aria-label="Close">&times;</button>
     <button type="button" class="lb-prev" aria-label="Previous painting">&#8249;</button>
     <button type="button" class="lb-next" aria-label="Next painting">&#8250;</button>`;
@@ -134,16 +135,33 @@
 
   const lbImg = dialog.querySelector("img");
   const lbCap = dialog.querySelector(".lightbox-caption");
+  const lbDetails = dialog.querySelector(".lightbox-details");
 
   function show(i) {
     current = (i + visible.length) % visible.length;
     const p = visible[current];
+    const details = Array.isArray(p.details) ? p.details : [];
     lbImg.src = p.image;
     lbImg.alt = p.alt || p.title;
     lbCap.innerHTML = `
       <div class="title">${escapeHTML(p.title)}</div>
       <div class="meta">${escapeHTML([meta(p), status(p)].filter(Boolean).join(" · "))}</div>
-      ${p.description ? `<p>${escapeHTML(p.description)}</p>` : ""}`;
+      ${p.description ? `<p>${escapeHTML(p.description)}</p>` : ""}
+      ${details.length ? `<a class="lb-more" href="#lb-details">${details.length} detail${details.length > 1 ? "s" : ""} &darr;</a>` : ""}`;
+
+    // detail images sit below the painting; scroll down to see them
+    lbDetails.hidden = !details.length;
+    lbDetails.id = "lb-details";
+    lbDetails.innerHTML = details
+      .map(
+        (d) => `
+      <figure>
+        <img src="${escapeHTML(d.image)}" alt="${escapeHTML(d.alt || p.title + " detail")}" loading="lazy" decoding="async">
+        ${d.label ? `<figcaption>${escapeHTML(p.title)} &mdash; ${escapeHTML(d.label)}</figcaption>` : ""}
+      </figure>`
+      )
+      .join("");
+    dialog.scrollTop = 0;
     // preload neighbours
     [current + 1, current - 1].forEach((n) => {
       const q = visible[(n + visible.length) % visible.length];
@@ -158,13 +176,20 @@
     dialog.showModal();
   });
 
+  lbCap.addEventListener("click", (e) => {
+    if (!e.target.closest(".lb-more")) return;
+    e.preventDefault();
+    lbDetails.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+
   dialog.querySelector(".lb-close").addEventListener("click", () => dialog.close());
   dialog.querySelector(".lb-prev").addEventListener("click", () => show(current - 1));
   dialog.querySelector(".lb-next").addEventListener("click", () => show(current + 1));
 
   // click on dark background closes
   dialog.addEventListener("click", (e) => {
-    if (e.target === dialog || e.target.classList.contains("lightbox-inner")) dialog.close();
+    if (e.target === dialog || e.target.classList.contains("lightbox-inner") ||
+        e.target.classList.contains("lightbox-details")) dialog.close();
   });
 
   dialog.addEventListener("keydown", (e) => {

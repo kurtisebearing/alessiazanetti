@@ -27,52 +27,24 @@
     "description": "",
     "available": true,
     "price": "",
-    "featured": true
-  },
-  {
-    "id": "spring-sub-detail-1",
-    "title": "Spring Sub (detail 1)",
-    "year": 2026,
-    "medium": "Oil on canvas",
-    "size": "121 × 121 cm",
-    "series": "",
-    "image": "images/paintings/spring-sub-detail-1.jpg",
-    "thumb": "images/thumbs/spring-sub-detail-1.jpg",
-    "alt": "Detail of Spring Sub: soft pink and lilac light above small figures",
-    "description": "",
-    "available": true,
-    "price": "",
-    "featured": false
-  },
-  {
-    "id": "spring-sub-detail-2",
-    "title": "Spring Sub (detail 2)",
-    "year": 2026,
-    "medium": "Oil on canvas",
-    "size": "121 × 121 cm",
-    "series": "",
-    "image": "images/paintings/spring-sub-detail-2.jpg",
-    "thumb": "images/thumbs/spring-sub-detail-2.jpg",
-    "alt": "Detail of Spring Sub: pale blue and pink brushwork in the upper sky",
-    "description": "",
-    "available": true,
-    "price": "",
-    "featured": false
-  },
-  {
-    "id": "spring-sub-detail-3",
-    "title": "Spring Sub (detail 3)",
-    "year": 2026,
-    "medium": "Oil on canvas",
-    "size": "121 × 121 cm",
-    "series": "",
-    "image": "images/paintings/spring-sub-detail-3.jpg",
-    "thumb": "images/thumbs/spring-sub-detail-3.jpg",
-    "alt": "Detail of Spring Sub: a tangle of reclining figures in warm flesh tones",
-    "description": "",
-    "available": true,
-    "price": "",
-    "featured": false
+    "featured": true,
+    "details": [
+      {
+        "image": "images/paintings/spring-sub-detail-1.jpg",
+        "label": "Detail 1",
+        "alt": "Detail of Spring Sub: soft pink and lilac light above small figures"
+      },
+      {
+        "image": "images/paintings/spring-sub-detail-2.jpg",
+        "label": "Detail 2",
+        "alt": "Detail of Spring Sub: pale blue and pink brushwork in the upper sky"
+      },
+      {
+        "image": "images/paintings/spring-sub-detail-3.jpg",
+        "label": "Detail 3",
+        "alt": "Detail of Spring Sub: a tangle of reclining figures in warm flesh tones"
+      }
+    ]
   },
   {
     "id": "clueless",
@@ -87,37 +59,19 @@
     "description": "",
     "available": true,
     "price": "",
-    "featured": true
-  },
-  {
-    "id": "clueless-left",
-    "title": "Clueless (left panel)",
-    "year": 2026,
-    "medium": "Oil on canvas",
-    "size": "100 × 172 cm",
-    "series": "",
-    "image": "images/paintings/clueless-left.jpg",
-    "thumb": "images/thumbs/clueless-left.jpg",
-    "alt": "Left panel of Clueless: dancing figures among pink and red blooms",
-    "description": "",
-    "available": true,
-    "price": "",
-    "featured": false
-  },
-  {
-    "id": "clueless-right",
-    "title": "Clueless (right panel)",
-    "year": 2026,
-    "medium": "Oil on canvas",
-    "size": "100 × 172 cm",
-    "series": "",
-    "image": "images/paintings/clueless-right.jpg",
-    "thumb": "images/thumbs/clueless-right.jpg",
-    "alt": "Right panel of Clueless: figures beneath a pale sky with an orange sphere and a lily",
-    "description": "",
-    "available": true,
-    "price": "",
-    "featured": false
+    "featured": true,
+    "details": [
+      {
+        "image": "images/paintings/clueless-left.jpg",
+        "label": "Left panel",
+        "alt": "Left panel of Clueless: dancing figures among pink and red blooms"
+      },
+      {
+        "image": "images/paintings/clueless-right.jpg",
+        "label": "Right panel",
+        "alt": "Right panel of Clueless: figures beneath a pale sky with an orange sphere and a lily"
+      }
+    ]
   },
   {
     "id": "lost-in-the-forest",
