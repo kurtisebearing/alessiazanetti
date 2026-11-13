@@ -219,15 +219,17 @@ h3 { font-size: 1.15rem; }
 .card { margin: 0; }
 
 /* Wide works (e.g. diptychs): "layout": "wide" in paintings.json.
-   Two columns wide on larger screens; full uncropped image on phones. */
-.grid { grid-auto-flow: dense; }
+   Gallery page: a full row of its own, shown uncropped.
+   Home page (selected works): two columns wide. Phones: full width, uncropped. */
 .card.card--wide .frame { aspect-ratio: auto; }
 .card.card--wide img { height: auto; }
+[data-gallery="all"] .card--wide { grid-column: 1 / -1; }
 @media (min-width: 640px) {
-  .card--wide { grid-column: span 2; }
-  .card.card--wide .frame { aspect-ratio: 1.69; }
-  .card.card--wide img { height: 100%; }
+  [data-gallery="featured"] .card--wide { grid-column: span 2; }
+  [data-gallery="featured"] .card.card--wide .frame { aspect-ratio: 1.69; }
+  [data-gallery="featured"] .card.card--wide img { height: 100%; }
 }
+
 .card button {
   display: block;
   width: 100%;

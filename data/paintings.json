@@ -1,5 +1,33 @@
 [
   {
+    "id": "clueless",
+    "title": "Clueless",
+    "year": 2026,
+    "medium": "Oil on canvas",
+    "size": "100 × 172 cm",
+    "series": "",
+    "image": "images/paintings/clueless.jpg",
+    "thumb": "images/paintings/clueless.jpg",
+    "alt": "Diptych of two panels filled with figures and blossoms in pink, red, violet and green",
+    "description": "",
+    "available": true,
+    "price": "",
+    "featured": true,
+    "details": [
+      {
+        "image": "images/paintings/clueless-left.jpg",
+        "label": "Left panel",
+        "alt": "Left panel of Clueless: dancing figures among pink and red blooms"
+      },
+      {
+        "image": "images/paintings/clueless-right.jpg",
+        "label": "Right panel",
+        "alt": "Right panel of Clueless: figures beneath a pale sky with an orange sphere and a lily"
+      }
+    ],
+    "layout": "wide"
+  },
+  {
     "id": "nothing-is-connected-to-everything",
     "title": "Nothing is Connected to Everything, Everything is Connected to Something",
     "year": 2026,
@@ -45,34 +73,6 @@
         "alt": "Detail of Spring Sub: a tangle of reclining figures in warm flesh tones"
       }
     ]
-  },
-  {
-    "id": "clueless",
-    "title": "Clueless",
-    "year": 2026,
-    "medium": "Oil on canvas",
-    "size": "100 × 172 cm",
-    "series": "",
-    "image": "images/paintings/clueless.jpg",
-    "thumb": "images/thumbs/clueless.jpg",
-    "alt": "Diptych of two panels filled with figures and blossoms in pink, red, violet and green",
-    "description": "",
-    "available": true,
-    "price": "",
-    "featured": true,
-    "details": [
-      {
-        "image": "images/paintings/clueless-left.jpg",
-        "label": "Left panel",
-        "alt": "Left panel of Clueless: dancing figures among pink and red blooms"
-      },
-      {
-        "image": "images/paintings/clueless-right.jpg",
-        "label": "Right panel",
-        "alt": "Right panel of Clueless: figures beneath a pale sky with an orange sphere and a lily"
-      }
-    ],
-    "layout": "wide"
   },
   {
     "id": "lost-in-the-forest",

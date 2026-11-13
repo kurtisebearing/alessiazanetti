@@ -62,8 +62,9 @@ when you double-click an `.html` file. Use a tiny local server instead:
 - Separate each entry from the next with a comma, but don't put a comma after the
   last one. A missing or extra comma is the most common reason the gallery stops loading.
 - `"featured": true` puts the painting on the home page (the first 3 are shown).
-- `"layout": "wide"` (optional) gives a wide work such as a diptych a double-width card in
-  the grid, so it isn't cropped to the upright shape.
+- `"layout": "wide"` (optional) is for wide works such as diptychs. On the gallery page the
+  work gets a full row of its own, uncropped. On the home page it takes two columns. Put it
+  first in the list so the rows after it stay regular.
 - `"details"` (optional) adds close-ups or extra views. They appear below the painting when
   someone opens it and scrolls down, not in the gallery grid:
 
