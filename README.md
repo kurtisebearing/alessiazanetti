@@ -62,6 +62,8 @@ when you double-click an `.html` file. Use a tiny local server instead:
 - Separate each entry from the next with a comma, but don't put a comma after the
   last one. A missing or extra comma is the most common reason the gallery stops loading.
 - `"featured": true` puts the painting on the home page (the first 3 are shown).
+- `"layout": "wide"` (optional) gives a wide work such as a diptych a double-width card in
+  the grid, so it isn't cropped to the upright shape.
 - `"details"` (optional) adds close-ups or extra views. They appear below the painting when
   someone opens it and scrolls down, not in the gallery grid:
 

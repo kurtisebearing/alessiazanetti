@@ -101,7 +101,7 @@
     container.innerHTML = visible
       .map(
         (p, i) => `
-      <figure class="card">
+      <figure class="card${p.layout === "wide" ? " card--wide" : ""}">
         <button type="button" data-index="${i}" aria-label="View ${escapeHTML(p.title)} larger">
           <div class="frame">
             <img src="${escapeHTML(p.thumb || p.image)}" alt="${escapeHTML(p.alt || p.title)}"
