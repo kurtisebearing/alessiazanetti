@@ -321,7 +321,7 @@ h3 { font-size: 1.15rem; }
 }
 @media (max-width: 760px) { .about-grid { grid-template-columns: 1fr; } }
 
-.portrait { background: var(--line); aspect-ratio: 2 / 3; overflow: hidden; }
+.portrait { background: var(--line); aspect-ratio: 4 / 5; overflow: hidden; }
 .portrait img { width: 100%; height: 100%; object-fit: cover; }
 
 .statement {

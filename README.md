@@ -70,7 +70,7 @@ when you double-click an `.html` file. Use a tiny local server instead:
 ## 3. Edit the text
 
 - **Bio and CV:** edit `about.html`. To change the portrait, replace
-  `images/portrait.jpg` (portrait format, 2:3, about 1066 × 1600 px).
+  `images/portrait.jpg` (portrait format, 4:5, about 1280 × 1600 px).
 - **Email and Instagram:** the footer of every page and `contact.html` link to
   `alessia_zanetti@yahoo.it` and `instagram.com/alessia_zanetti`. To change them,
   search all four HTML files and replace every occurrence.
